@@ -1,538 +1,579 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Zubdah – App Landing</title>
-  <style>
-    :root {
-      --bg: #0f172a;
-      --bg-accent: #1e293b;
-      --card-bg: #0b1220;
-      --card-border: rgba(148, 163, 184, 0.3);
-      --text-main: #e5e7eb;
-      --text-muted: #9ca3af;
-      --accent: #f97316;
-      --accent-soft: rgba(249, 115, 22, 0.18);
-      --accent-strong: #fb923c;
-      --whatsapp: #25d366;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zubdah</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script> window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        ::-webkit-scrollbar { display: none;}
+        body { font-family: 'Inter', sans-serif; }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+        /* Simple RTL helper: reverse space-x gaps */
+        [dir="rtl"] .space-x-3 > :not([hidden]) ~ :not([hidden]),
+        [dir="rtl"] .space-x-4 > :not([hidden]) ~ :not([hidden]),
+        [dir="rtl"] .space-x-6 > :not([hidden]) ~ :not([hidden]),
+        [dir="rtl"] .space-x-8 > :not([hidden]) ~ :not([hidden]),
+        [dir="rtl"] .space-x-12 > :not([hidden]) ~ :not([hidden]) {
+            --tw-space-x-reverse: 1;
+        }
 
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-      background: radial-gradient(circle at top, #1f2937 0, #020617 55%, #000 100%);
-      color: var(--text-main);
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 16px;
-    }
-
-    .page {
-      width: 100%;
-      max-width: 860px;
-      border-radius: 20px;
-      padding: 22px 20px;
-      background: linear-gradient(135deg, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.92));
-      border: 1px solid var(--card-border);
-      box-shadow:
-        0 22px 60px rgba(0, 0, 0, 0.6),
-        0 0 0 1px rgba(15, 23, 42, 0.9);
-    }
-
-    .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-      margin-bottom: 20px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .logo-circle {
-      width: 36px;
-      height: 36px;
-      border-radius: 999px;
-      background: radial-gradient(circle at 30% 20%, #fed7aa 0, #fb923c 40%, #c2410c 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 800;
-      font-size: 1.1rem;
-      color: #111827;
-      box-shadow: 0 10px 25px rgba(248, 113, 22, 0.55);
-    }
-
-    .app-meta {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-
-    .app-name {
-      font-size: 1.15rem;
-      font-weight: 700;
-    }
-
-    .app-tagline {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-    }
-
-    .language-toggle {
-      display: inline-flex;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      overflow: hidden;
-      font-size: 0.8rem;
-      background-color: rgba(15, 23, 42, 0.9);
-    }
-
-    .language-toggle button {
-      border: none;
-      background: transparent;
-      padding: 6px 12px;
-      cursor: pointer;
-      font: inherit;
-      color: var(--text-muted);
-      transition: background 0.15s ease, color 0.15s ease;
-    }
-
-    .language-toggle button.active {
-      background: var(--accent-soft);
-      color: #fed7aa;
-    }
-
-    .layout {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .main-column,
-    .side-column {
-      padding: 16px 14px;
-      border-radius: 16px;
-      background: radial-gradient(circle at top left, rgba(248, 250, 252, 0.05) 0, rgba(15, 23, 42, 0.95) 60%);
-      border: 1px solid rgba(148, 163, 184, 0.2);
-    }
-
-    .main-column {
-      flex: 2;
-    }
-
-    .side-column {
-      flex: 1.4;
-    }
-
-    .hero-title {
-      font-size: 1.4rem;
-      line-height: 1.4;
-      margin-bottom: 10px;
-    }
-
-    .hero-text {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      line-height: 1.5;
-      margin-bottom: 18px;
-    }
-
-    .badges {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .store-button {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-      padding: 10px 14px;
-      border-radius: 999px;
-      background: #020617;
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      transition:
-        transform 0.1s ease,
-        box-shadow 0.1s ease,
-        border-color 0.1s ease,
-        background 0.1s ease;
-      color: var(--text-main);
-    }
-
-    .store-button:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 10px 28px rgba(15, 23, 42, 0.9);
-      border-color: var(--accent-strong);
-      background: #020617;
-    }
-
-    .store-icon {
-      width: 26px;
-      height: 26px;
-      border-radius: 999px;
-      background: radial-gradient(circle at 30% 20%, #e5e7eb 0, #9ca3af 40%, #4b5563 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.1rem;
-      flex-shrink: 0;
-    }
-
-    .store-text {
-      display: flex;
-      flex-direction: column;
-      line-height: 1.2;
-    }
-
-    .store-label {
-      font-size: 0.7rem;
-      color: var(--text-muted);
-    }
-
-    .store-name {
-      font-size: 0.95rem;
-      font-weight: 600;
-    }
-
-    .store-button.disabled {
-      opacity: 0.6;
-      cursor: default;
-      border-style: dashed;
-      border-color: rgba(148, 163, 184, 0.7);
-      background: rgba(15, 23, 42, 0.85);
-    }
-
-    .store-button.disabled:hover {
-      transform: none;
-      box-shadow: none;
-      border-color: rgba(148, 163, 184, 0.7);
-    }
-
-    .coming-soon-pill {
-      margin-left: auto;
-      padding: 2px 8px;
-      border-radius: 999px;
-      background: rgba(148, 163, 184, 0.18);
-      font-size: 0.7rem;
-      color: var(--text-muted);
-      white-space: nowrap;
-    }
-
-    .section-title {
-      font-size: 0.95rem;
-      font-weight: 600;
-      margin-bottom: 12px;
-      color: #e5e7eb;
-    }
-
-    .contact-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      margin-bottom: 12px;
-      font-size: 0.9rem;
-    }
-
-    .contact-label {
-      color: var(--text-muted);
-      flex: 1;
-    }
-
-    .contact-link {
-      text-decoration: none;
-      color: var(--accent-strong);
-      font-weight: 500;
-      word-break: break-all;
-    }
-
-    .whatsapp-button {
-      width: 34px;
-      height: 34px;
-      border-radius: 999px;
-      border: none;
-      background: radial-gradient(circle at 30% 20%, #bbf7d0 0, #22c55e 35%, #15803d 100%);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      box-shadow: 0 10px 25px rgba(22, 163, 74, 0.6);
-      padding: 0;
-    }
-
-    .whatsapp-link {
-      display: inline-flex;
-      text-decoration: none;
-    }
-
-    .whatsapp-icon {
-      width: 20px;
-      height: 20px;
-      fill: #022c22;
-    }
-
-    .support-note {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      margin-top: 4px;
-    }
-
-    .footer {
-      margin-top: 14px;
-      font-size: 0.75rem;
-      color: rgba(148, 163, 184, 0.9);
-      text-align: center;
-    }
-
-    .footer span {
-      color: var(--accent-strong);
-    }
-
-    @media (min-width: 720px) {
-      .page {
-        padding: 26px 26px 22px;
-      }
-
-      .layout {
-        flex-direction: row;
-        align-items: stretch;
-      }
-
-      .main-column,
-      .side-column {
-        padding: 18px 18px 16px;
-      }
-
-      .hero-title {
-        font-size: 1.6rem;
-      }
-    }
-
-    /* RTL tweaks */
-    [dir="rtl"] .page {
-      direction: rtl;
-    }
-
-    [dir="rtl"] .header,
-    [dir="rtl"] .brand,
-    [dir="rtl"] .layout,
-    [dir="rtl"] .contact-row {
-      flex-direction: row-reverse;
-    }
-
-    [dir="rtl"] .coming-soon-pill {
-      margin-left: 0;
-      margin-right: auto;
-    }
-
-    [dir="rtl"] .hero-title,
-    [dir="rtl"] .hero-text,
-    [dir="rtl"] .section-title,
-    [dir="rtl"] .support-note,
-    [dir="rtl"] .footer {
-      text-align: right;
-    }
-
-    @media (max-width: 400px) {
-      .header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      [dir="rtl"] .header {
-        align-items: flex-end;
-      }
-    }
-  </style>
+        [dir="rtl"] .text-left { text-align: right; }
+        [dir="rtl"] .text-right { text-align: left; } /* rarely used but here just in case */
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#D97706',
+                        primaryLight: '#F59E0B',
+                        cream: '#FEF7ED',
+                        warmGray: '#78716C'
+                    }
+                }
+            }
+        }
+    </script>
 </head>
-<body>
-  <div class="page">
-    <header class="header">
-      <div class="brand">
-        <div class="logo-circle">Z</div>
-        <div class="app-meta">
-          <div class="app-name"
-               data-en="Zubdah"
-               data-ar="زبدة">
-            Zubdah
-          </div>
-          <div class="app-tagline"
-               data-en="Smart recipe saver for video lovers"
-               data-ar="أذكى طريقة لحفظ فيديوهات الوصفات">
-            Smart recipe saver for video lovers
-          </div>
-        </div>
-      </div>
+<body class="bg-white">
 
-      <div class="language-toggle">
-        <button id="btn-en" class="active">EN</button>
-        <button id="btn-ar">العربية</button>
-      </div>
-    </header>
-
-    <div class="layout">
-      <!-- Main / hero column -->
-      <section class="main-column">
-        <h1 class="hero-title"
-            data-en="Save recipe videos with one link."
-            data-ar="احفظ فيديوهات الوصفات برابط واحد.">
-          Save recipe videos with one link.
-        </h1>
-        <p class="hero-text"
-           data-en="Zubdah turns cooking videos into clean, ready-to-use recipes – so you never pause, rewind, or screenshot again."
-           data-ar="زبدة تحوّل فيديوهات الطبخ إلى وصفات مرتّبة وجاهزة للاستخدام — بدون إيقاف أو إعادة أو لقطات شاشة.">
-          Zubdah turns cooking videos into clean, ready-to-use recipes – so you never pause, rewind, or screenshot again.
-        </p>
-
-        <div class="badges">
-          <!-- App Store -->
-          <a class="store-button"
-             href="https://apps.apple.com/app/idYOUR_IOS_APP_ID"
-             target="_blank"
-             rel="noopener">
-            <div class="store-icon"></div>
-            <div class="store-text">
-              <span class="store-label"
-                    data-en="Download on the"
-                    data-ar="تحميل من">
-                Download on the
-              </span>
-              <span class="store-name">App Store</span>
+<header id="header" class="fixed top-0 w-full bg-white/90 backdrop-blur-md z-50 border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+        <div class="flex items-center space-x-3">
+            <!-- Your real icon -->
+            <div class="w-10 h-10 rounded-lg overflow-hidden bg-cream flex items-center justify-center">
+                <img
+                    src="https://lh3.googleusercontent.com/sitesv/AAzXCkfQnlU2Ux1p4BC082eQcg4SmoZxPmwGKpd3vAV1xBWPvYL1sBmyma37U843zzdGHV2jThauwzDffp09-8mACfE5TNerb7gK_jG2Y-7idsBnTBokCR6Pqr_W_JeJGMSJjk86GfOYa4cgYWkTtxT9ZHUCYRGpP-__tgZK6UdBvOCkugcEdEtW9mhP93A=w16383"
+                    alt="Zubdah logo"
+                    class="w-full h-full object-cover"
+                />
             </div>
-          </a>
-
-          <!-- Google Play - coming soon -->
-          <div class="store-button disabled">
-            <div class="store-icon">
-              <!-- Simple Android-ish robot shape (just decorative) -->
-              <span style="font-size: 1rem;">🤖</span>
-            </div>
-            <div class="store-text">
-              <span class="store-label"
-                    data-en="Android version"
-                    data-ar="نسخة أندرويد">
-                Android version
-              </span>
-              <span class="store-name"
-                    data-en="Coming soon"
-                    data-ar="قريباً">
-                Coming soon
-              </span>
-            </div>
-            <div class="coming-soon-pill"
-                 data-en="Soon on Google Play"
-                 data-ar="قريباً على متجر Play">
-              Soon on Google Play
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Side / contact column -->
-      <section class="side-column">
-        <h2 class="section-title"
-            data-en="Contact & support"
-            data-ar="التواصل والدعم">
-          Contact & support
-        </h2>
-
-        <div class="contact-row">
-          <div class="contact-label"
-               data-en="Email"
-               data-ar="البريد الإلكتروني">
-            Email
-          </div>
-          <a class="contact-link"
-             href="mailto:support@zubdahapp.com">
-            support@zubdahapp.com
-          </a>
+            <span class="text-2xl font-bold text-gray-900"
+                  data-en="Zubdah"
+                  data-ar="زبدة">Zubdah</span>
         </div>
 
-        <div class="contact-row">
-          <div class="contact-label"
-               data-en="WhatsApp"
-               data-ar="واتساب">
-            WhatsApp
-          </div>
-          <!-- Icon-only WhatsApp button -->
-          <!-- Replace 9665XXXXXXXX with your number (no “+”) -->
-          <a class="whatsapp-link"
-             href="https://wa.me/9665XXXXXXXX"
-             target="_blank"
-             rel="noopener"
-             aria-label="Contact us on WhatsApp">
-            <button class="whatsapp-button" type="button">
-              <svg class="whatsapp-icon" viewBox="0 0 32 32" aria-hidden="true">
-                <path d="M16 3C9.4 3 4 8.3 4 14.8c0 2.6.9 5 2.4 6.9L4 29l7.5-2.3c1.8 1 3.9 1.5 6.1 1.5 6.6 0 12-5.3 12-11.8C29.6 8.3 24.2 3 16 3zm0 2.4c5.5 0 9.9 4.3 9.9 9.5 0 5.3-4.4 9.6-9.9 9.6-2 0-3.9-.6-5.5-1.6l-.4-.2-4.5 1.4 1.4-4.3-.3-.4c-1.2-1.6-1.9-3.6-1.9-5.6C4.8 9.7 10.2 5.4 16 5.4zm-4.2 4c-.3-.7-.7-.7-1.1-.7-.3 0-.7 0-1.1.1-.4.1-1 .9-1 1.7s1 1.9 1.1 2c.1.1 2 3.1 4.9 4.3 2.4 1 2.9.8 3.4.8s1.7-.6 2-1.3.3-1.2.2-1.3c-.1-.1-.3-.2-.7-.4-.4-.2-2-1-2.3-1.1-.3-.1-.5-.2-.7.2-.2.4-.8 1.1-1 1.3-.2.2-.4.2-.8 0-.4-.2-1.6-.6-3-2-1.1-1.1-1.8-2.4-2-2.8-.2-.4 0-.6.1-.8.1-.1.4-.4.5-.6.2-.2.2-.4.3-.6.1-.2 0-.5 0-.7z"></path>
-              </svg>
-            </button>
-          </a>
-        </div>
+        <div class="flex items-center space-x-6">
+            <nav class="hidden md:flex space-x-8 text-sm font-medium">
+                <a href="#features"
+                   class="text-gray-600 hover:text-primary transition-colors"
+                   data-en="Features"
+                   data-ar="المميزات">
+                    Features
+                </a>
+                <a href="#how-it-works"
+                   class="text-gray-600 hover:text-primary transition-colors"
+                   data-en="How It Works"
+                   data-ar="كيف تعمل زبدة؟">
+                    How It Works
+                </a>
+                <a href="#support"
+                   class="text-gray-600 hover:text-primary transition-colors"
+                   data-en="Support"
+                   data-ar="الدعم">
+                    Support
+                </a>
+            </nav>
 
-        <p class="support-note"
-           data-en="We usually reply within a short time during the day."
-           data-ar="عادةً نرد خلال وقت قصير أثناء اليوم.">
-          We usually reply within a short time during the day.
-        </p>
-      </section>
+            <!-- Real language toggle -->
+            <div class="flex items-center space-x-2 text-sm">
+                <button id="btn-en"
+                        class="px-2 py-1 rounded-full border border-gray-200 bg-gray-900 text-white font-medium">
+                    EN
+                </button>
+                <button id="btn-ar"
+                        class="px-2 py-1 rounded-full border border-gray-200 text-gray-600 hover:bg-gray-100 font-medium">
+                    العربية
+                </button>
+            </div>
+        </div>
     </div>
+</header>
 
-    <footer class="footer">
-      <span data-en="Zubdah"
-            data-ar="زبدة">Zubdah</span>
-      <span data-en=" keeps your recipes tidy, so your cooking stays fun."
-            data-ar=" ترتّب وصفاتك، عشان الطبخ يظل ممتع.">
-        keeps your recipes tidy, so your cooking stays fun.
-      </span>
-    </footer>
-  </div>
+<section id="hero" class="pt-24 pb-16 bg-gradient-to-br from-cream via-white to-orange-50 min-h-[520px] flex items-center">
+    <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
+        <div class="space-y-8">
+            <div class="space-y-6">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight"
+                    data-en="Save recipe videos, without screenshots."
+                    data-ar="احفظ فيديوهات الوصفات بدون لقطات شاشة.">
+                    Save recipe videos, without screenshots.
+                </h1>
+                <p class="text-lg md:text-xl text-gray-600 leading-relaxed max-w-lg"
+                   data-en="Zubdah turns your favorite cooking videos into clean, organized recipes – so you never pause, rewind, or lose ingredients again."
+                   data-ar="زبدة تحوّل فيديوهات الطبخ المفضلة لديك إلى وصفات مرتبة ومنظمة — بدون إيقاف، أو إعادة، أو ضياع في المكونات.">
+                    Zubdah turns your favorite cooking videos into clean, organized recipes – so you never pause, rewind, or lose ingredients again.
+                </p>
+            </div>
+            
+            <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                <!-- App Store button (active) -->
+                <a href="https://apps.apple.com/app/idYOUR_IOS_APP_ID"
+                   target="_blank"
+                   rel="noopener"
+                   class="relative inline-flex items-center space-x-3 bg-black rounded-xl px-6 py-3 cursor-pointer hover:bg-gray-800 transition-colors">
+                    <i class="fa-brands fa-apple text-white text-2xl"></i>
+                    <div class="text-white leading-tight">
+                        <div class="text-xs"
+                             data-en="Download on the"
+                             data-ar="تحميل من">
+                            Download on the
+                        </div>
+                        <div class="text-lg font-semibold"
+                             data-en="App Store"
+                             data-ar="App Store">
+                            App Store
+                        </div>
+                    </div>
+                </a>
 
-  <script>
-    const btnEn = document.getElementById("btn-en");
-    const btnAr = document.getElementById("btn-ar");
+                <!-- Google Play - Coming soon (disabled) -->
+                <div class="relative inline-flex items-center space-x-3 bg-gray-300 rounded-xl px-6 py-3 opacity-70 cursor-not-allowed">
+                    <i class="fa-brands fa-google-play text-gray-600 text-2xl"></i>
+                    <div class="text-gray-600 leading-tight">
+                        <div class="text-xs"
+                             data-en="Android version"
+                             data-ar="نسخة أندرويد">
+                            Android version
+                        </div>
+                        <div class="text-lg font-semibold"
+                             data-en="Coming soon"
+                             data-ar="قريباً">
+                            Coming soon
+                        </div>
+                    </div>
+                    <div class="absolute -top-2 -right-2 bg-primary text-white text-xs px-2 py-1 rounded-full"
+                         data-en="Soon on Google Play"
+                         data-ar="قريباً على متجر Play">
+                        Coming Soon
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="flex justify-center lg:justify-end">
+            <div class="relative">
+                <div class="w-80 h-auto">
+                    <img class="w-full h-auto max-h-96 object-contain drop-shadow-2xl"
+                         src="https://storage.googleapis.com/uxpilot-auth.appspot.com/1dd3c5536c-763621893d8d01d661c5.png"
+                         alt="Preview of the Zubdah app interface on a modern phone" />
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="social-proof" class="py-12 bg-gray-50 border-y border-gray-100">
+    <div class="max-w-7xl mx-auto px-6">
+        <p class="text-center text-gray-500 text-sm mb-8 font-medium"
+           data-en="MADE FOR HOME COOKS AND FOOD LOVERS"
+           data-ar="مصمم لعشاق الطبخ والوصفات">
+            MADE FOR HOME COOKS AND FOOD LOVERS
+        </p>
+        <div class="flex justify-center items-center space-x-12 opacity-40 text-sm md:text-base">
+            <div class="font-semibold text-gray-400"
+                 data-en="No more pausing videos"
+                 data-ar="لا مزيد من إيقاف الفيديو">
+                No more pausing videos
+            </div>
+            <div class="font-semibold text-gray-400"
+                 data-en="No more lost ingredients"
+                 data-ar="لا مزيد من نسيان المقادير">
+                No more lost ingredients
+            </div>
+            <div class="font-semibold text-gray-400"
+                 data-en="Recipes in one place"
+                 data-ar="كل وصفاتك في مكان واحد">
+                Recipes in one place
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="features" class="py-20">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold text-gray-900 mb-4"
+                data-en="Why use Zubdah?"
+                data-ar="لماذا تستخدم زبدة؟">
+                Why use Zubdah?
+            </h2>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto"
+               data-en="Turn any cooking video into a clean recipe with ingredients, steps, and a shopping-friendly format."
+               data-ar="حوّل أي فيديو طبخ إلى وصفة مرتبة تحتوي على المقادير والخطوات بصيغة مناسبة للتسوق.">
+                Turn any cooking video into a clean recipe with ingredients, steps, and a shopping-friendly format.
+            </p>
+        </div>
+        
+        <div class="space-y-24">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="space-y-6">
+                    <div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center">
+                        <i class="fa-solid fa-list-check text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-3xl font-bold text-gray-900"
+                        data-en="Instant recipe from any link"
+                        data-ar="وصفة جاهزة من أي رابط">
+                        Instant recipe from any link
+                    </h3>
+                    <p class="text-lg text-gray-600 leading-relaxed"
+                       data-en="Paste a TikTok, Reels, or YouTube cooking video link, and Zubdah extracts the ingredients and steps for you."
+                       data-ar="انسخ رابط فيديو طبخ من تيك توك، ريلز، أو يوتيوب، وزبدة تستخرج لك المقادير والخطوات فوراً.">
+                        Paste a TikTok, Reels, or YouTube cooking video link, and Zubdah extracts the ingredients and steps for you.
+                    </p>
+                    <ul class="space-y-3 text-sm md:text-base">
+                        <li class="flex items-center space-x-3">
+                            <i class="fa-solid fa-check text-primary"></i>
+                            <span class="text-gray-600"
+                                  data-en="No more pausing to write ingredients"
+                                  data-ar="لا حاجة لإيقاف الفيديو وكتابة المقادير">
+                                No more pausing to write ingredients
+                            </span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <i class="fa-solid fa-check text-primary"></i>
+                            <span class="text-gray-600"
+                                  data-en="Clean ingredient list and steps"
+                                  data-ar="قائمة مقادير وخطوات مرتبة وواضحة">
+                                Clean ingredient list and steps
+                            </span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <i class="fa-solid fa-check text-primary"></i>
+                            <span class="text-gray-600"
+                                  data-en="Ready to use while you cook"
+                                  data-ar="جاهزة للاستخدام أثناء الطبخ">
+                                Ready to use while you cook
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="flex justify-center">
+                    <img class="w-80 h-auto max-h-96 object-contain"
+                         src="https://storage.googleapis.com/uxpilot-auth.appspot.com/a8dd9c436a-afeb81fac856c17854c7.png"
+                         alt="Phone mockup showing a recipe generated from a video" />
+                </div>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="lg:order-2 space-y-6">
+                    <div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center">
+                        <i class="fa-solid fa-book-open text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-3xl font-bold text-gray-900"
+                        data-en="All your saved recipes in one place"
+                        data-ar="كل وصفاتك المحفوظة في مكان واحد">
+                        All your saved recipes in one place
+                    </h3>
+                    <p class="text-lg text-gray-600 leading-relaxed"
+                       data-en="Keep your favorite recipes organized instead of scattered across screenshots, links, and notes."
+                       data-ar="احفظ وصفاتك المفضلة في مكان واحد بدلاً من تشتتها بين لقطات شاشة وروابط وملاحظات.">
+                        Keep your favorite recipes organized instead of scattered across screenshots, links, and notes.
+                    </p>
+                    <ul class="space-y-3 text-sm md:text-base">
+                        <li class="flex items-center space-x-3">
+                            <i class="fa-solid fa-check text-primary"></i>
+                            <span class="text-gray-600"
+                                  data-en="Search and open any saved recipe quickly"
+                                  data-ar="ابحث وافتح أي وصفة محفوظة بسرعة">
+                                Search and open any saved recipe quickly
+                            </span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <i class="fa-solid fa-check text-primary"></i>
+                            <span class="text-gray-600"
+                                  data-en="Always know which video the recipe came from"
+                                  data-ar="دائماً تعرف من أي فيديو جاءت الوصفة">
+                                Always know which video the recipe came from
+                            </span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <i class="fa-solid fa-check text-primary"></i>
+                            <span class="text-gray-600"
+                                  data-en="Perfect for home cooks and families"
+                                  data-ar="مثالية لربات البيوت وعشاق الطبخ">
+                                Perfect for home cooks and families
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="lg:order-1 flex justify-center">
+                    <img class="w-80 h-auto max-h-96 object-contain"
+                         src="https://storage.googleapis.com/uxpilot-auth.appspot.com/1c2e828c03-c52fd374465a9ba42f28.png"
+                         alt="Phone mockup showing a list of saved recipes" />
+                </div>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="space-y-6">
+                    <div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center">
+                        <i class="fa-solid fa-cart-shopping text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-3xl font-bold text-gray-900"
+                        data-en="Cook smarter with shopping-friendly recipes"
+                        data-ar="اطبخ بذكاء مع وصفات مناسبة للتسوق">
+                        Cook smarter with shopping-friendly recipes
+                    </h3>
+                    <p class="text-lg text-gray-600 leading-relaxed"
+                       data-en="Zubdah helps you quickly see what you need to buy, so you can go from video to grocery cart with less effort."
+                       data-ar="زبدة تساعدك على رؤية ما تحتاج شراءه بسرعة، لتنتقل من الفيديو إلى عربة التسوق بأقل مجهود.">
+                        Zubdah helps you quickly see what you need to buy, so you can go from video to grocery cart with less effort.
+                    </p>
+                    <ul class="space-y-3 text-sm md:text-base">
+                        <li class="flex items-center space-x-3">
+                            <i class="fa-solid fa-check text-primary"></i>
+                            <span class="text-gray-600"
+                                  data-en="See ingredients clearly before you shop"
+                                  data-ar="شاهد المقادير بوضوح قبل التسوق">
+                                See ingredients clearly before you shop
+                            </span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <i class="fa-solid fa-check text-primary"></i>
+                            <span class="text-gray-600"
+                                  data-en="Easy to follow while cooking"
+                                  data-ar="سهلة المتابعة أثناء الطبخ">
+                                Easy to follow while cooking
+                            </span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <i class="fa-solid fa-check text-primary"></i>
+                            <span class="text-gray-600"
+                                  data-en="Designed for busy home kitchens"
+                                  data-ar="مصممة للمطابخ المنزلية المزدحمة">
+                                Designed for busy home kitchens
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="flex justify-center">
+                    <img class="w-80 h-auto max-h-96 object-contain"
+                         src="https://storage.googleapis.com/uxpilot-auth.appspot.com/a8dd9c436a-f99fac9b5b73a490bda6.png"
+                         alt="Phone mockup showing ingredients and steps clearly laid out" />
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="how-it-works" class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold text-gray-900 mb-4"
+                data-en="How Zubdah works"
+                data-ar="كيف تعمل زبدة؟">
+                How Zubdah works
+            </h2>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto"
+               data-en="Get a clean recipe from any cooking video in three simple steps."
+               data-ar="احصل على وصفة مرتبة من أي فيديو طبخ في ثلاث خطوات بسيطة.">
+                Get a clean recipe from any cooking video in three simple steps.
+            </p>
+        </div>
+        
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="text-center space-y-6">
+                <div class="relative">
+                    <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto">
+                        <i class="fa-solid fa-link text-white text-2xl"></i>
+                    </div>
+                    <div class="absolute -top-2 -right-2 w-8 h-8 bg-gray-900 text-white rounded-full flex items-center justify-center text-sm font-bold">1</div>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900"
+                    data-en="Paste the video link"
+                    data-ar="انسخ رابط الفيديو">
+                    Paste the video link
+                </h3>
+                <p class="text-gray-600"
+                   data-en="Copy the link of any cooking video from TikTok, Reels, or YouTube into Zubdah."
+                   data-ar="انسخ رابط أي فيديو طبخ من تيك توك أو ريلز أو يوتيوب وضعه في زبدة.">
+                    Copy the link of any cooking video from TikTok, Reels, or YouTube into Zubdah.
+                </p>
+            </div>
+            
+            <div class="text-center space-y-6">
+                <div class="relative">
+                    <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto">
+                        <i class="fa-solid fa-wand-magic-sparkles text-white text-2xl"></i>
+                    </div>
+                    <div class="absolute -top-2 -right-2 w-8 h-8 bg-gray-900 text-white rounded-full flex items-center justify-center text-sm font-bold">2</div>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900"
+                    data-en="Let Zubdah do the work"
+                    data-ar="دع زبدة تقوم بالعمل">
+                    Let Zubdah do the work
+                </h3>
+                <p class="text-gray-600"
+                   data-en="Zubdah extracts ingredients and steps and builds a clean, readable recipe for you."
+                   data-ar="زبدة تستخرج المقادير والخطوات وتعرضها لك على شكل وصفة واضحة وسهلة القراءة.">
+                    Zubdah extracts ingredients and steps and builds a clean, readable recipe for you.
+                </p>
+            </div>
+            
+            <div class="text-center space-y-6">
+                <div class="relative">
+                    <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto">
+                        <i class="fa-solid fa-kitchen-set text-white text-2xl"></i>
+                    </div>
+                    <div class="absolute -top-2 -right-2 w-8 h-8 bg-gray-900 text-white rounded-full flex items-center justify-center text-sm font-bold">3</div>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900"
+                    data-en="Cook with a clean recipe"
+                    data-ar="اطبخ مع وصفة مرتبة">
+                    Cook with a clean recipe
+                </h3>
+                <p class="text-gray-600"
+                   data-en="Use your phone or tablet in the kitchen with a step-by-step view that’s easy to follow."
+                   data-ar="استخدم هاتفك أو جهازك اللوحي في المطبخ مع عرض خطوة بخطوة سهل المتابعة.">
+                    Use your phone or tablet in the kitchen with a step-by-step view that’s easy to follow.
+                </p>
+            </div>
+        </div>
+        
+        <div class="hidden md:flex justify-center items-center mt-12">
+            <div class="flex items-center space-x-8 text-primary">
+                <div class="w-16 h-0.5 bg-primary"></div>
+                <i class="fa-solid fa-arrow-right text-xl"></i>
+                <div class="w-16 h-0.5 bg-primary"></div>
+                <i class="fa-solid fa-arrow-right text-xl"></i>
+                <div class="w-16 h-0.5 bg-primary"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="support" class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-start">
+        <div class="space-y-4">
+            <h2 class="text-3xl font-bold text-gray-900"
+                data-en="Need help or have feedback?"
+                data-ar="تحتاج مساعدة أو عندك ملاحظة؟">
+                Need help or have feedback?
+            </h2>
+            <p class="text-gray-600 text-lg"
+               data-en="We’d love to hear from you. Contact us any time with questions, issues, or ideas."
+               data-ar="يسعدنا التواصل معك في أي وقت لطرح أسئلة أو مشاكل أو اقتراحات.">
+                We’d love to hear from you. Contact us any time with questions, issues, or ideas.
+            </p>
+            <div class="space-y-2 text-sm md:text-base">
+                <div class="flex items-center space-x-3">
+                    <i class="fa-solid fa-envelope text-primary"></i>
+                    <a href="mailto:support@zubdahapp.com"
+                       class="text-gray-700 hover:text-primary transition-colors"
+                       data-en="support@zubdahapp.com"
+                       data-ar="support@zubdahapp.com">
+                        support@zubdahapp.com
+                    </a>
+                </div>
+                <p class="text-gray-500 text-sm"
+                   data-en="We usually respond within a short time during the day."
+                   data-ar="عادةً نرد خلال وقت قصير أثناء اليوم.">
+                    We usually respond within a short time during the day.
+                </p>
+            </div>
+        </div>
+        <div class="space-y-4">
+            <h3 class="text-xl font-semibold text-gray-900"
+                data-en="Quick WhatsApp support"
+                data-ar="دعم سريع عبر واتساب">
+                Quick WhatsApp support
+            </h3>
+            <p class="text-gray-600"
+               data-en="Tap the WhatsApp icon in the corner of the screen to chat with us directly."
+               data-ar="اضغط على أيقونة واتساب في زاوية الشاشة للدردشة معنا مباشرة.">
+                Tap the WhatsApp icon in the corner of the screen to chat with us directly.
+            </p>
+            <p class="text-gray-500 text-sm"
+               data-en="No phone number is shown – just a direct, private chat."
+               data-ar="لن يظهر رقم هاتفك على الصفحة — فقط محادثة مباشرة وخاصة.">
+                No phone number is shown – just a direct, private chat.
+            </p>
+        </div>
+    </div>
+</section>
+
+<footer id="footer" class="bg-gray-900 text-white py-10">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-lg overflow-hidden bg-black flex items-center justify-center">
+                    <img
+                        src="https://lh3.googleusercontent.com/sitesv/AAzXCkfQnlU2Ux1p4BC082eQcg4SmoZxPmwGKpd3vAV1xBWPvYL1sBmyma37U843zzdGHV2jThauwzDffp09-8mACfE5TNerb7gK_jG2Y-7idsBnTBokCR6Pqr_W_JeJGMSJjk86GfOYa4cgYWkTtxT9ZHUCYRGpP-__tgZK6UdBvOCkugcEdEtW9mhP93A=w16383"
+                        alt="Zubdah logo"
+                        class="w-full h-full object-cover"
+                    />
+                </div>
+                <span class="text-xl font-bold"
+                      data-en="Zubdah"
+                      data-ar="زبدة">Zubdah</span>
+            </div>
+            <p class="text-gray-400 text-sm text-center md:text-right"
+               data-en="Zubdah keeps your recipes tidy, so your cooking stays fun."
+               data-ar="زبدة ترتّب وصفاتك، عشان الطبخ يظل ممتع.">
+                Zubdah keeps your recipes tidy, so your cooking stays fun.
+            </p>
+            <p class="text-gray-500 text-xs"
+               data-en="© 2024 Zubdah. All rights reserved."
+               data-ar="© ٢٠٢٤ زبدة. جميع الحقوق محفوظة.">
+                © 2024 Zubdah. All rights reserved.
+            </p>
+        </div>
+    </div>
+</footer>
+
+<!-- Floating WhatsApp icon-only button -->
+<!-- Replace 9665XXXXXXXX with your full number, no "+" -->
+<a href="https://wa.me/9665XXXXXXXX"
+   target="_blank"
+   rel="noopener"
+   aria-label="Contact us on WhatsApp"
+   class="fixed bottom-4 right-4 z-50">
+    <div class="w-12 h-12 rounded-full bg-green-500 flex items-center justify-center shadow-xl hover:bg-green-600 transition-colors">
+        <i class="fa-brands fa-whatsapp text-white text-2xl"></i>
+    </div>
+</a>
+
+<script>
+    const btnEn = document.getElementById('btn-en');
+    const btnAr = document.getElementById('btn-ar');
 
     function setLanguage(lang) {
-      const html = document.documentElement;
+        const html = document.documentElement;
 
-      if (lang === "ar") {
-        html.lang = "ar";
-        html.dir = "rtl";
-        btnEn.classList.remove("active");
-        btnAr.classList.add("active");
-      } else {
-        html.lang = "en";
-        html.dir = "ltr";
-        btnAr.classList.remove("active");
-        btnEn.classList.add("active");
-      }
+        if (lang === 'ar') {
+            html.lang = 'ar';
+            html.dir = 'rtl';
+            btnEn.classList.remove('bg-gray-900','text-white');
+            btnEn.classList.add('text-gray-600','hover:bg-gray-100');
+            btnAr.classList.remove('text-gray-600','hover:bg-gray-100');
+            btnAr.classList.add('bg-gray-900','text-white');
+        } else {
+            html.lang = 'en';
+            html.dir = 'ltr';
+            btnAr.classList.remove('bg-gray-900','text-white');
+            btnAr.classList.add('text-gray-600','hover:bg-gray-100');
+            btnEn.classList.remove('text-gray-600','hover:bg-gray-100');
+            btnEn.classList.add('bg-gray-900','text-white');
+        }
 
-      document.querySelectorAll("[data-en]").forEach(function (el) {
-        const en = el.getAttribute("data-en");
-        const ar = el.getAttribute("data-ar");
-        if (!en || !ar) return;
-        el.textContent = lang === "ar" ? ar : en;
-      });
+        document.querySelectorAll('[data-en]').forEach(function (el) {
+            const en = el.getAttribute('data-en');
+            const ar = el.getAttribute('data-ar');
+            if (!en || !ar) return;
+            el.textContent = (lang === 'ar') ? ar : en;
+        });
     }
 
-    btnEn.addEventListener("click", () => setLanguage("en"));
-    btnAr.addEventListener("click", () => setLanguage("ar"));
+    btnEn.addEventListener('click', () => setLanguage('en'));
+    btnAr.addEventListener('click', () => setLanguage('ar'));
 
-    // Default: English
-    setLanguage("en");
-  </script>
+    // Default language: English
+    setLanguage('en');
+</script>
+
 </body>
 </html>
