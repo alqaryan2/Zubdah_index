@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-en="Zubdah – Terms of Use" data-ar="زبدة – شروط الاستخدام">
+    زبدة – شروط الاستخدام
+  </title>
+
+  <!-- Tailwind CDN (same as index.html) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#D97706',
+            primaryLight: '#F59E0B',
+            cream: '#FEF7ED',
+            warmGray: '#78716C'
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    }
+    /* RTL spacing fix for Tailwind's space-x utilities */
+    [dir="rtl"] .space-x-3 > :not([hidden]) ~ :not([hidden]),
+    [dir="rtl"] .space-x-4 > :not([hidden]) ~ :not([hidden]),
+    [dir="rtl"] .space-x-6 > :not([hidden]) ~ :not([hidden]) {
+      --tw-space-x-reverse: 1;
+    }
+  </style>
+</head>
+<body class="bg-gray-50">
+
+  <!-- Header with logo + language toggle -->
+  <header class="w-full bg-white border-b border-gray-100">
+    <div class="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <!-- Use your local logo -->
+        <div class="w-9 h-9 rounded-lg overflow-hidden bg-cream flex items-center justify-center">
+          <img
+            src="images/app logo.png"
+            alt="Zubdah logo"
+            class="w-full h-full object-cover"
+          />
+        </div>
+        <span class="text-xl font-bold text-gray-900"
+              data-en="Zubdah"
+              data-ar="زبدة">
+          زبدة
+        </span>
+      </div>
+
+      <div class="flex items-center space-x-2 text-sm">
+        <button id="btn-en"
+                class="px-2 py-1 rounded-full border border-gray-200 text-gray-600 hover:bg-gray-100 font-medium">
+          EN
+        </button>
+        <button id="btn-ar"
+                class="px-2 py-1 rounded-full border border-gray-200 bg-gray-900 text-white font-medium">
+          العربية
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-4 py-10">
+    <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 md:p-8">
+      <h1 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4"
+          data-en="Terms of Use (EULA)"
+          data-ar="شروط الاستخدام (اتفاقية المستخدم)">
+        شروط الاستخدام (اتفاقية المستخدم)
+      </h1>
+      <p class="text-sm text-gray-500 mb-8"
+         data-en="Effective Date: 2024"
+         data-ar="تاريخ النفاذ: 2024">
+        تاريخ النفاذ: 2024
+      </p>
+
+      <div class="space-y-8 text-sm md:text-base leading-loose text-gray-800">
+
+        <!-- 1. Agreement to Terms -->
+        <section>
+          <h2 class="font-semibold text-lg mb-2"
+              data-en="1. Agreement to Terms"
+              data-ar="1. الموافقة على الشروط">
+            1. الموافقة على الشروط
+          </h2>
+          <p
+            data-en="By downloading or using Zubdah, you agree to these Terms of Use (“Terms”). If you do not agree with any part of these Terms, you must stop using the App."
+            data-ar="باستخدامك لتطبيق زبدة، فإنك توافق على هذه الشروط. وفي حال عدم الموافقة على أي جزء منها، يرجى التوقف عن استخدام التطبيق.">
+            باستخدامك لتطبيق زبدة، فإنك توافق على هذه الشروط. وفي حال عدم الموافقة على أي جزء منها، يرجى التوقف عن استخدام التطبيق.
+          </p>
+        </section>
+
+        <!-- 2. License to Use -->
+        <section>
+          <h2 class="font-semibold text-lg mb-2"
+              data-en="2. License to Use"
+              data-ar="2. الترخيص">
+            2. الترخيص
+          </h2>
+          <p
+            data-en="We grant you a limited, non-exclusive, non-transferable license to use the App for personal, non-commercial purposes only, in accordance with these Terms."
+            data-ar="نمنحك ترخيصاً محدوداً، غير حصري وغير قابل للتحويل لاستخدام التطبيق للاستخدام الشخصي وغير التجاري فقط، وذلك وفقاً لهذه الشروط.">
+            نمنحك ترخيصاً محدوداً، غير حصري وغير قابل للتحويل لاستخدام التطبيق للاستخدام الشخصي وغير التجاري فقط، وذلك وفقاً لهذه الشروط.
+          </p>
+        </section>
+
+        <!-- 3. Subscriptions -->
+        <section>
+          <h2 class="font-semibold text-lg mb-2"
+              data-en="3. Subscriptions (Auto-Renewable)"
+              data-ar="3. الاشتراكات (تجدد تلقائياً)">
+            3. الاشتراكات (تجدد تلقائياً)
+          </h2>
+
+          <p class="mb-2"
+             data-en="Zubdah offers auto-renewable subscription plans:"
+             data-ar="يوفر تطبيق زبدة خطط اشتراك تتجدد تلقائياً:">
+            يوفر تطبيق زبدة خطط اشتراك تتجدد تلقائياً:
+          </p>
+
+          <ul class="list-disc ms-6 space-y-1">
+            <li
+              data-en="Monthly subscription — $2.99 (renews every month)."
+              data-ar="اشتراك شهري — 2.99 دولار (يتجدد شهرياً).">
+              اشتراك شهري — 2.99 دولار (يتجدد شهرياً).
+            </li>
+            <li
+              data-en="Yearly subscription — $19.99 (renews every 12 months) and includes a 3-day free trial for new yearly subscribers."
+              data-ar="اشتراك سنوي — 19.99 دولار (يتجدد سنوياً) ويتضمن نسخة تجريبية لمدة 3 أيام للمشتركين الجدد في الخطة السنوية.">
+              اشتراك سنوي — 19.99 دولار (يتجدد سنوياً) ويتضمن نسخة تجريبية لمدة 3 أيام للمشتركين الجدد في الخطة السنوية.
+            </li>
+          </ul>
+
+          <h3 class="font-semibold mt-4 mb-1"
+              data-en="Subscription Payment and Renewal"
+              data-ar="الدفع والتجديد">
+            الدفع والتجديد
+          </h3>
+          <ul class="list-disc ms-6 space-y-1">
+            <li
+              data-en="Payment is charged to your Apple ID account at confirmation of purchase."
+              data-ar="يتم خصم رسوم الاشتراك من حساب Apple ID عند تأكيد الشراء.">
+              يتم خصم رسوم الاشتراك من حساب Apple ID عند تأكيد الشراء.
+            </li>
+            <li
+              data-en="Subscriptions automatically renew unless canceled at least 24 hours before the end of the current period."
+              data-ar="يتجدد الاشتراك تلقائياً ما لم يتم إلغاؤه قبل 24 ساعة على الأقل من نهاية الفترة الحالية.">
+              يتجدد الاشتراك تلقائياً ما لم يتم إلغاؤه قبل 24 ساعة على الأقل من نهاية الفترة الحالية.
+            </li>
+            <li
+              data-en="Renewal charges are applied to your Apple ID account, and prices may vary by region as shown in the App."
+              data-ar="يتم تطبيق رسوم التجديد على حساب Apple ID، وقد تختلف الأسعار حسب المنطقة كما هو موضح داخل التطبيق.">
+              يتم تطبيق رسوم التجديد على حساب Apple ID، وقد تختلف الأسعار حسب المنطقة كما هو موضح داخل التطبيق.
+            </li>
+          </ul>
+
+          <h3 class="font-semibold mt-4 mb-1"
+              data-en="How to Cancel"
+              data-ar="كيفية الإلغاء">
+            كيفية الإلغاء
+          </h3>
+          <p
+            data-en="You may manage or cancel your subscription at any time from your device’s Settings → Apple ID → Subscriptions."
+            data-ar="يمكنك إدارة أو إلغاء اشتراكك في أي وقت عبر: الإعدادات → Apple ID → الاشتراكات.">
+            يمكنك إدارة أو إلغاء اشتراكك في أي وقت عبر: الإعدادات → Apple ID → الاشتراكات.
+          </p>
+        </section>
+
+        <!-- 4. Consumable In-App Purchases -->
+        <section>
+          <h2 class="font-semibold text-lg mb-2"
+              data-en="4. Consumable In-App Purchases"
+              data-ar="4. عمليات الشراء داخل التطبيق (غير المتجددة)">
+            4. عمليات الشراء داخل التطبيق (غير المتجددة)
+          </h2>
+          <p class="mb-2"
+             data-en="Zubdah offers a consumable in-app purchase:"
+             data-ar="يوفر التطبيق عملية شراء استهلاكية داخل التطبيق:">
+            يوفر التطبيق عملية شراء استهلاكية داخل التطبيق:
+          </p>
+          <ul class="list-disc ms-6 space-y-1 mb-2">
+            <li
+              data-en="“5 More Recipes” — $0.99 (one-time purchase) which unlocks 5 additional recipe generations. This item can be purchased multiple times and is available for all users, including subscribers."
+              data-ar="\"5 وصفات إضافية\" — 0.99 دولار (شراء لمرة واحدة) تمنح المستخدم 5 عمليات توليد إضافية للوصفات، ويمكن شراؤها عدة مرات، ومتاحة لجميع المستخدمين بما في ذلك المشتركين.">
+              "5 وصفات إضافية" — 0.99 دولار (شراء لمرة واحدة) تمنح المستخدم 5 عمليات توليد إضافية للوصفات، ويمكن شراؤها عدة مرات، ومتاحة لجميع المستخدمين بما في ذلك المشتركين.
+            </li>
+          </ul>
+          <p
+            data-en="Consumable purchases do not renew and cannot be restored once used."
+            data-ar="لا يمكن استعادة المشتريات الاستهلاكية بعد استخدامها، ولا تتجدد تلقائياً.">
+            لا يمكن استعادة المشتريات الاستهلاكية بعد استخدامها، ولا تتجدد تلقائياً.
+          </p>
+        </section>
+
+        <!-- 5. Account Deletion -->
+        <section>
+          <h2 class="font-semibold text-lg mb-2"
+              data-en="5. Account Deletion"
+              data-ar="5. حذف الحساب">
+            5. حذف الحساب
+          </h2>
+          <p
+            data-en="You may delete your account directly from within the App by navigating to: Profile → Edit Profile → Delete Account. When an account is deleted, stored personal data will be removed permanently unless retention is required by law."
+            data-ar="يمكن للمستخدم حذف حسابه مباشرة من داخل التطبيق عبر: الملف الشخصي → تعديل الملف الشخصي → حذف الحساب. سيتم حذف بياناتك نهائياً ما لم يكن الاحتفاظ بها مطلوباً بموجب القانون.">
+            يمكن للمستخدم حذف حسابه مباشرة من داخل التطبيق عبر: الملف الشخصي → تعديل الملف الشخصي → حذف الحساب. سيتم حذف بياناتك نهائياً ما لم يكن الاحتفاظ بها مطلوباً بموجب القانون.
+          </p>
+        </section>
+
+        <!-- 6. Intellectual Property -->
+        <section>
+          <h2 class="font-semibold text-lg mb-2"
+              data-en="6. Intellectual Property"
+              data-ar="6. الملكية الفكرية">
+            6. الملكية الفكرية
+          </h2>
+          <p
+            data-en="All content, code, design, icons, and graphics included in the App are owned exclusively by Zubdah | زبدة and protected by applicable intellectual property laws. You may not copy, modify, reverse-engineer, or redistribute any part of the App."
+            data-ar="جميع المحتويات والتصاميم والرموز والرسومات المضمنة في التطبيق مملوكة حصرياً لـ Zubdah | زبدة، ومحميّة بموجب قوانين الملكية الفكرية المعمول بها. يُمنع نسخ أو تعديل أو عكس هندسة أو إعادة توزيع أي جزء من التطبيق.">
+            جميع المحتويات والتصاميم والرموز والرسومات المضمنة في التطبيق مملوكة حصرياً لـ Zubdah | زبدة، ومحميّة بموجب قوانين الملكية الفكرية المعمول بها. يُمنع نسخ أو تعديل أو عكس هندسة أو إعادة توزيع أي جزء من التطبيق.
+          </p>
+        </section>
+
+        <!-- 7. Disclaimer -->
+        <section>
+          <h2 class="font-semibold text-lg mb-2"
+              data-en="7. Disclaimer of Warranties"
+              data-ar="7. إخلاء المسؤولية">
+            7. إخلاء المسؤولية
+          </h2>
+          <p class="mb-2"
+             data-en="The App is provided “as is” and “as available”, without any warranties of any kind, including but not limited to:"
+             data-ar="يتم تقديم التطبيق كما هو ووفق الإمكانيات المتاحة دون أي ضمانات من أي نوع، بما في ذلك على سبيل المثال لا الحصر:">
+            يتم تقديم التطبيق كما هو ووفق الإمكانيات المتاحة دون أي ضمانات من أي نوع، بما في ذلك على سبيل المثال لا الحصر:
+          </p>
+          <ul class="list-disc ms-6 space-y-1">
+            <li
+              data-en="Uninterrupted or error-free service."
+              data-ar="عدم انقطاع الخدمة أو خلوّها من الأخطاء.">
+              عدم انقطاع الخدمة أو خلوّها من الأخطاء.
+            </li>
+            <li
+              data-en="Accuracy or completeness of generated recipes."
+              data-ar="دقة أو اكتمال الوصفات المُولدة.">
+              دقة أو اكتمال الوصفات المُولدة.
+            </li>
+            <li
+              data-en="Compatibility with all devices or systems."
+              data-ar="التوافق مع جميع الأجهزة أو الأنظمة.">
+              التوافق مع جميع الأجهزة أو الأنظمة.
+            </li>
+          </ul>
+          <p class="mt-2"
+             data-en="Use of the App is at your own risk."
+             data-ar="استخدام التطبيق يكون على مسؤوليتك الشخصية.">
+            استخدام التطبيق يكون على مسؤوليتك الشخصية.
+          </p>
+        </section>
+
+        <!-- 8. Limitation of Liability -->
+        <section>
+          <h2 class="font-semibold text-lg mb-2"
+              data-en="8. Limitation of Liability"
+              data-ar="8. تحديد المسؤولية">
+            8. تحديد المسؤولية
+          </h2>
+          <p class="mb-2"
+             data-en="To the maximum extent permitted by law, Zubdah | زبدة shall not be liable for any indirect, incidental, or consequential damages, data loss, service interruptions, or issues caused by third-party providers."
+             data-ar="إلى الحد الذي يسمح به القانون، لا تتحمل زبدة | Zubdah أي مسؤولية عن الأضرار غير المباشرة أو العرضية أو التبعية، أو فقدان البيانات، أو الأعطال أو الانقطاعات، أو المشكلات الناجمة عن أطراف خارجية.">
+            إلى الحد الذي يسمح به القانون، لا تتحمل زبدة | Zubdah أي مسؤولية عن الأضرار غير المباشرة أو العرضية أو التبعية، أو فقدان البيانات، أو الأعطال أو الانقطاعات، أو المشكلات الناجمة عن أطراف خارجية.
+          </p>
+          <p
+            data-en="Your sole and exclusive remedy in case of dissatisfaction with the App is to stop using it."
+            data-ar="العلاج الوحيد المتاح لك في حال عدم الرضا عن التطبيق هو التوقف عن استخدامه.">
+            العلاج الوحيد المتاح لك في حال عدم الرضا عن التطبيق هو التوقف عن استخدامه.
+          </p>
+        </section>
+
+        <!-- 9. Changes to These Terms -->
+        <section>
+          <h2 class="font-semibold text-lg mb-2"
+              data-en="9. Changes to These Terms"
+              data-ar="9. التعديلات على الشروط">
+            9. التعديلات على الشروط
+          </h2>
+          <p
+            data-en="We may update these Terms from time to time. Updates will be posted on this page with an updated effective date. Continued use of the App after any changes constitutes acceptance of the updated Terms."
+            data-ar="قد نقوم بتحديث هذه الشروط من فترة لأخرى. سيتم نشر أي تحديث في هذه الصفحة مع تعديل تاريخ النفاذ. استمرارك في استخدام التطبيق بعد أي تعديل يُعد قبولاً منك بالشروط المحدثة.">
+            قد نقوم بتحديث هذه الشروط من فترة لأخرى. سيتم نشر أي تحديث في هذه الصفحة مع تعديل تاريخ النفاذ. استمرارك في استخدام التطبيق بعد أي تعديل يُعد قبولاً منك بالشروط المحدثة.
+          </p>
+        </section>
+
+        <!-- 10. Contact Us -->
+        <section>
+          <h2 class="font-semibold text-lg mb-2"
+              data-en="10. Contact Us"
+              data-ar="10. كيفية التواصل">
+            10. كيفية التواصل
+          </h2>
+          <p class="mb-1"
+             data-en="If you have any questions about these Terms, you can contact us at:"
+             data-ar="لأي استفسار بخصوص هذه الشروط، يمكنك التواصل معنا عبر:">
+            لأي استفسار بخصوص هذه الشروط، يمكنك التواصل معنا عبر:
+          </p>
+          <ul class="list-none space-y-1">
+            <li
+              data-en="📧 Email: support@zubdahapp.com"
+              data-ar="📧 البريد الإلكتروني: support@zubdahapp.com">
+              📧 البريد الإلكتروني: support@zubdahapp.com
+            </li>
+            <li
+              data-en="🏛️ Address: Riyadh 14966, Saudi Arabia"
+              data-ar="🏛️ العنوان: الرياض 14966، المملكة العربية السعودية">
+              🏛️ العنوان: الرياض 14966، المملكة العربية السعودية
+            </li>
+            <li
+              data-en="📍 Name: Zubdah | زبدة"
+              data-ar="📍 اسم الجهة: Zubdah | زبدة">
+              📍 اسم الجهة: Zubdah | زبدة
+            </li>
+          </ul>
+        </section>
+
+      </div>
+    </div>
+
+    <div class="mt-6 text-sm text-gray-500">
+      <a href="index.html"
+         class="text-primary hover:text-primaryLight"
+         data-en="Back to home"
+         data-ar="العودة إلى الصفحة الرئيسية">
+        العودة إلى الصفحة الرئيسية
+      </a>
+    </div>
+  </main>
+
+  <script>
+    const btnEn = document.getElementById('btn-en');
+    const btnAr = document.getElementById('btn-ar');
+
+    function setLanguage(lang) {
+      const html = document.documentElement;
+
+      if (lang === 'ar') {
+        html.lang = 'ar';
+        html.dir = 'rtl';
+        btnAr.classList.add('bg-gray-900','text-white');
+        btnAr.classList.remove('text-gray-600','hover:bg-gray-100');
+        btnEn.classList.remove('bg-gray-900','text-white');
+        btnEn.classList.add('text-gray-600','hover:bg-gray-100');
+      } else {
+        html.lang = 'en';
+        html.dir = 'ltr';
+        btnEn.classList.add('bg-gray-900','text-white');
+        btnEn.classList.remove('text-gray-600','hover:bg-gray-100');
+        btnAr.classList.remove('bg-gray-900','text-white');
+        btnAr.classList.add('text-gray-600','hover:bg-gray-100');
+      }
+
+      document.querySelectorAll('[data-en]').forEach(function (el) {
+        const en = el.getAttribute('data-en');
+        const ar = el.getAttribute('data-ar');
+        if (!en || !ar) return;
+        el.textContent = (lang === 'ar') ? ar : en;
+      });
+    }
+
+    btnEn.addEventListener('click', () => setLanguage('en'));
+    btnAr.addEventListener('click', () => setLanguage('ar'));
+
+    // Default = Arabic
+    setLanguage('ar');
+  </script>
+
+</body>
+</html>
