@@ -4,41 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Introductory Video</title>
-<style>
-    body, html { 
-        margin: 0; 
-        padding: 0; 
-        width: 100%; 
-        height: 100%; 
-        overflow: hidden; 
-        background-color: #000; /* Keeps the background black for any empty space */
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    video { 
-        max-width: 100%; 
-        max-height: 100%; 
-        width: auto;
-        height: auto;
-        object-fit: contain; /* This "contains" the video within the screen without stretching */
-    }
-</style>
+    <style>
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background-color: #000; display: flex; justify-content: center; align-items: center; }
+        
+        video { width: 100vw; height: 100vh; object-fit: contain; }
+
+        /* Centered Play Button */
+        #playOverlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            background: rgba(255, 255, 255, 0.9);
+            color: #000;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-family: sans-serif;
+            font-weight: bold;
+            font-size: 18px;
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: transform 0.2s;
+        }
+
+        #playOverlay:hover { transform: translate(-50%, -50%) scale(1.1); }
+    </style>
 </head>
 <body>
 
-    <video playsinline loop id="introVideo" controls>
+    <video muted playsinline loop id="introVideo" controls>
         <source src="intro.mp4" type="video/mp4">
-        Your browser does not support the video tag.
     </video>
 
-    <style>
-        /* This ensures the built-in controls look good on the black background */
-        video::-webkit-media-controls-enclosure {
-            background-color: rgba(0, 0, 0, 0.5);
-            border-radius: 10px;
-        }
-    </style>
+    <button id="playOverlay">🔊 Play with Sound</button>
+
+    <script>
+        const video = document.getElementById('introVideo');
+        const btn = document.getElementById('playOverlay');
+
+        btn.addEventListener('click', function() {
+            video.muted = false; // Enable sound
+            video.currentTime = 0; // Restart video for the full experience
+            video.play();
+            btn.style.display = 'none'; // Hide the button
+        });
+    </script>
 
 </body>
 </html>
