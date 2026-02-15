@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introductory Video</title>
+    <style>
+        /* This makes the video fill the entire browser window */
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background-color: #000; }
+        video { width: 100vw; height: 100vh; object-fit: cover; }
+    </style>
+</head>
+<body>
+
+    <video autoplay muted playsinline loop id="introVideo">
+        <source src="intro.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <script>
+        // Optional: This ensures the video tries to play 
+        // even if the browser delays the autoplay.
+        window.addEventListener('load', function() {
+            var video = document.getElementById('introVideo');
+            video.play().catch(function(error) {
+                console.log("Autoplay was prevented. High-five the screen to play!");
+            });
+        });
+    </script>
+</body>
+</html>
